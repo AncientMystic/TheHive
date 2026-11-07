@@ -9,6 +9,9 @@ support welcome and appreciated:
 - Cashapp: $AncientMystic144 
 - XMR: 44FeV38E1xVV87EaynuNkxcBpmi2G5kSE5n1wPSYjezD87MwsPckBs7SvwJmTRJ15rA3TDYSLPTpY7jyzdVTu9Sv9mtoHpi
 
+## ⚠️ Status: Early Development (Preview)
+
+The Hive is currently in active, private development. This repository serves as a public showcase of the architecture, philosophy, and early benchmark results. The core source code will be released soon.
 
 # what the Hive is:
 
