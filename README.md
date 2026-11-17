@@ -519,6 +519,8 @@ This table follows the owner's **156-topic, 14-domain taxonomy** (2026-11-17). I
 
 </details>
 
+this lane could be extended to unit conversions, financial calculations, legal rule-checking, or engineering validations and more, all without hallucination risk.
+
 ---
 
 ## What works today
