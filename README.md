@@ -69,6 +69,57 @@ The honest summary. Think of it as a self-auditing curriculum: it invents new su
 
 TheHive is not one model with a long prompt. It is a small society with a strict constitution.
 
+```text
+                      ┌──────────────────────────────┐
+                      │        CURIOSITY             │
+                      │  gaps · contradictions ·     │
+                      │  uncertainty · novelty ·     │
+                      │  disagreement · seeded work  │
+                      └──────────────┬───────────────┘
+                                     │ tasks
+                                     ▼
+   ┌──────────────┐          ┌──────────────┐          ┌──────────────┐
+   │   SENSES     │          │   WORKERS    │          │   ORACLE     │
+   │ inbox · local│  learn   │ math · code  │  propose │ optional LLM │
+   │ docs · feeds │─────────▶│ physics ·    │─────────▶│ reviewer /   │
+   │ web (opt.)   │          │ quantum ·    │          │ second       │
+   └──────────────┘          │ research ·   │          │ opinion      │
+                             │ strategy ... │          └──────┬───────┘
+                             └──────┬───────┘                 │
+                                    │ queue findings          │ quarantine
+                                    ▼                         ▼
+                             ┌─────────────────────────────────────┐
+                             │              QUEEN                  │
+                             │  claim · re-verify · duplicate      │
+                             │  filter · promotion gate · ledger   │
+                             └──────┬───────────────┬──────────────┘
+                                    │               │
+                         verified   │               │  rejected / held
+                                    ▼               ▼
+                             ┌────────────┐   ┌────────────┐
+                             │   FACTS    │   │ QUARANTINE │
+                             │  (memory)  │   │  (holding) │
+                             └──────┬─────┘   └────────────┘
+                                    │
+                                    ▼
+                             ┌────────────┐
+                             │   LEDGER   │
+                             │ hash chain │
+                             │ rollback   │
+                             └────────────┘
+                                    │
+                                    ▼
+                      ┌──────────────────────────────┐
+                      │  CHAT · GUI · GAMIFICATION   │
+                      │  recall · proof display ·    │
+                      │  progression · owner console │
+                      └──────────────────────────────┘
+```
+
+The diagram is deliberately one-directional: proposals flow toward the queen, and only the queen writes knowledge. Reads flow back out to chat, the GUI, and the curriculum.
+
+---
+
 ### Workers propose
 
 Thirteen worker classes explore different kinds of work: math, code, physics, quantum, esoteric, algorithms, scout, strategy, UI, research, sovereign, general, and oracle. They scan local documents, inboxes, feeds, web material, code, and their own generated experiments. They can split a question into smaller tasks and hand the pieces to other workers.
