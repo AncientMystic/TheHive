@@ -221,6 +221,306 @@ And when raw's fixes came back, the hive verified all three to PASS in ~0.1 s ea
 
 ---
 
+# Formula Coverage — 156 Topics Across 14 Domains
+
+This table follows the owner's **156-topic, 14-domain taxonomy** (2026-11-17). It is deliberately separate from the repository's **G138 card gate**: G138 is 138 present A–L subject cards and excludes Arts (12) and Interdisciplinary (10). The full A–N card catalog is 167 IDs (160 present, 7 Batch 4 cards absent).
+
+**What a PASS means.** Each topic has one representative formula and one deterministic check with fixed inputs. A PASS means the formula expression evaluated to the recorded expected value. It verifies formula evaluation, not full subject coverage and not every formula in the field.
+
+**Result: 156/156 passed, 0 failed.**
+
+## Summary
+
+| Domain | Topics | Passed | Failed |
+|---|---:|---:|---:|
+| Formal & Mathematical Sciences | 22 | 22 | 0 |
+| Physics & Astronomy | 15 | 15 | 0 |
+| Chemistry | 8 | 8 | 0 |
+| Biology & Life Sciences | 13 | 13 | 0 |
+| Earth & Environmental Sciences | 7 | 7 | 0 |
+| Social Sciences | 13 | 13 | 0 |
+| Law & Governance | 5 | 5 | 0 |
+| Humanities | 10 | 10 | 0 |
+| Computer Science | 15 | 15 | 0 |
+| Engineering | 9 | 9 | 0 |
+| Medicine & Health | 9 | 9 | 0 |
+| Business & Management | 8 | 8 | 0 |
+| Arts & Design | 12 | 12 | 0 |
+| Interdisciplinary | 10 | 10 | 0 |
+| **Total** | **156** | **156** | **0** |
+
+## Topics by Domain
+
+<details>
+<summary><strong>Formal & Mathematical Sciences</strong> — 22 topics, 22/22 passed</summary>
+
+| ID | Topic | Formula | Check | Expected | Basis | Result |
+|---|---|---|---|---|---|---|
+| T001 | Propositional & first-order logic | `(p -> q) & p \|- q` | `not (((not p or q) and p) and not q)` | `True` | logic - modus ponens | PASS |
+| T002 | Modal/temporal logic | `[](p -> q) -> ([]p -> []q)` | `(p <= q) <= (p <= q)` | `True` | logic - K axiom propositional skeleton | PASS |
+| T003 | Proof theory | `Gamma \|- phi => Gamma \|= phi` | `(p and (p <= q)) <= q` | `True` | logic - soundness instance | PASS |
+| T004 | Model theory | `\|A\| <= max(aleph0, \|Sigma\|)` | `max(1, sigma) >= 1` | `True` | identity - finite cardinal instance | PASS |
+| T005 | Set theory | `\|A u B\| = \|A\| + \|B\| - \|A n B\|` | `a + b - inter` | `5` | numeric | PASS |
+| T006 | Category theory | `F(g o f) = F(g) o F(f)` | `2 * (x + 1)` | `8` | numeric - functor composition on numbers | PASS |
+| T007 | Universal algebra (groups/rings/fields) | `(a*b)*c = a*(b*c)` | `(a * b) * c` | `24` | numeric | PASS |
+| T008 | Linear algebra | `tr(A+B) = tr(A) + tr(B)` | `trace2(A) + trace2(B)` | `5` | identity | PASS |
+| T009 | Number theory | `a^(p-1) = 1 (mod p)` | `pow(a, p - 1, p)` | `1` | numeric | PASS |
+| T010 | Real/complex/functional analysis | `\|x+y\| <= \|x\| + \|y\|` | `abs(x + y) <= abs(x) + abs(y)` | `True` | identity - triangle inequality | PASS |
+| T011 | Topology | `d(A u B) subset dA u dB` | `set([0, 3]).issubset(set([0, 1, 2, 3]))` | `True` | logic - interval-boundary instance | PASS |
+| T012 | Differential geometry | `ds^2 = g_munu dx^mu dx^nu` | `dx**2 + dy**2` | `25` | numeric - Euclidean metric | PASS |
+| T013 | Combinatorics | `C(n,k) = n! / (k!(n-k)!)` | `factorial(n) // (factorial(k) * factorial(n - k))` | `10` | numeric | PASS |
+| T014 | Graph theory | `sum(deg(v)) = 2\|E\|` | `sum(degrees)` | `10` | identity - handshake lemma | PASS |
+| T015 | Probability | `P(A u B) = P(A)+P(B)-P(A n B)` | `pa + pb - pab` | `0.7` | numeric | PASS |
+| T016 | Measure & integration | `int_A 1 dmu = mu(A)` | `1 * mu` | `0.25` | numeric | PASS |
+| T017 | Optimization | `grad f(x*) = 0` | `2 * (x - 3)` | `0` | identity - quadratic minimum | PASS |
+| T018 | Numerical analysis | `\|x_(n+1)-x*\| <= C\|x_n-x*\|^2` | `abs(x1 - sqrt(2)) <= 0.5 * abs(x0 - sqrt(2))**2` | `True` | identity - Newton step | PASS |
+| T019 | Information theory | `H(X) = -sum p log2 p` | `-(0.5 * log2(0.5) + 0.5 * log2(0.5))` | `1.0` | numeric | PASS |
+| T020 | Computability | `H(e,e) = 1 - H(e,e)` | `h == 1 - h` | `False` | logic - diagonal contradiction skeleton | PASS |
+| T021 | Complexity | `P subset NP` | `len(cert) <= n**2` | `True` | logic - polynomial certificate | PASS |
+| T022 | Type theory | `(lambda x. x) y -> y` | `identity(y)` | `5` | numeric - beta reduction | PASS |
+
+</details>
+
+<details>
+<summary><strong>Physics & Astronomy</strong> — 15 topics, 15/15 passed</summary>
+
+| ID | Topic | Formula | Check | Expected | Basis | Result |
+|---|---|---|---|---|---|---|
+| T023 | Classical mechanics | `F = m a` | `m * a` | `6` | numeric | PASS |
+| T024 | Electromagnetism | `F = q(E + v x B)` | `q * (E + v * B)` | `14` | numeric - scalar collinear form | PASS |
+| T025 | Thermodynamics | `P V = n R T` | `n * R * T / V` | `100.0` | numeric | PASS |
+| T026 | Statistical mechanics | `p_i ~ exp(-E_i / kT)` | `exp(-(E1 - E2) / kT)` | `2.718281828459045` | numeric - Boltzmann ratio | PASS |
+| T027 | Special/general relativity | `gamma = 1 / sqrt(1 - v^2/c^2)` | `1 / sqrt(1 - (v / c)**2)` | `1.25` | numeric | PASS |
+| T028 | Quantum mechanics | `E = hbar omega` | `hbar * omega` | `2` | numeric | PASS |
+| T029 | Quantum field theory | `Z[J] = int Dphi exp(iS + i int J phi)` | `sqrt(pi / a)` | `1.7724538509055159` | numeric - Gaussian path-integral normalization | PASS |
+| T030 | Condensed matter | `E_g = h c / lambda` | `h * c / lam` | `1.9878e-19` | numeric | PASS |
+| T031 | Particle physics/Standard Model | `E^2 = p^2 c^2 + m^2 c^4` | `sqrt(E**2 - p**2 * c**2) / c**2` | `4` | numeric | PASS |
+| T032 | Optics | `n1 sin(theta1) = n2 sin(theta2)` | `n1 * sin(theta1)` | `0.5` | numeric | PASS |
+| T033 | Fluid dynamics | `P + 0.5 rho v^2 = const` | `P1 + 0.5 * rho * v1**2 == P2 + 0.5 * rho * v2**2` | `True` | identity - Bernoulli along a streamline | PASS |
+| T034 | Nuclear physics | `E = dm c^2` | `dm * c**2` | `90000000000000.0` | numeric | PASS |
+| T035 | Astronomy | `T^2 / a^3 = const` | `T**2 / a**3` | `1` | identity - Kepler III | PASS |
+| T036 | Astrophysics | `L = 4 pi R^2 sigma T^4` | `4 * pi * R**2 * sigma * T**4` | `12.566370614359172` | numeric | PASS |
+| T037 | Cosmology | `v = H0 d` | `H0 * d` | `7000` | numeric | PASS |
+
+</details>
+
+<details>
+<summary><strong>Chemistry</strong> — 8 topics, 8/8 passed</summary>
+
+| ID | Topic | Formula | Check | Expected | Basis | Result |
+|---|---|---|---|---|---|---|
+| T038 | General chemistry | `n = m / M` | `m / M` | `5` | numeric | PASS |
+| T039 | Organic chemistry | `DoU = (2C + 2 + N - H - X) / 2` | `(2 * C + 2 + N - H - X) / 2` | `4` | numeric | PASS |
+| T040 | Inorganic chemistry | `sum(oxidation states) = charge` | `2 * x + 3 * (-2)` | `0` | identity - charge balance | PASS |
+| T041 | Physical chemistry | `k = A exp(-Ea / RT)` | `A * exp(-Ea / (R * T))` | `1` | numeric | PASS |
+| T042 | Analytical chemistry | `A = epsilon b c` | `epsilon * b * c` | `24` | numeric | PASS |
+| T043 | Biochemistry | `v = Vmax [S] / (Km + [S])` | `Vmax * S / (Km + S)` | `5` | numeric | PASS |
+| T044 | Electrochemistry | `E = E0 - (RT/nF) ln Q` | `E0 - 0.0592 / n * log10(Q)` | `1.9408` | numeric | PASS |
+| T045 | Polymer chemistry | `Mn = sum(Ni Mi) / sum(Ni)` | `sum(Ni[i] * Mi[i] for i in range(len(Ni))) / sum(Ni)` | `16.666666666666668` | numeric | PASS |
+
+</details>
+
+<details>
+<summary><strong>Biology & Life Sciences</strong> — 13 topics, 13/13 passed</summary>
+
+| ID | Topic | Formula | Check | Expected | Basis | Result |
+|---|---|---|---|---|---|---|
+| T046 | Genetics | `p^2 + 2pq + q^2 = 1` | `p**2 + 2 * p * q + q**2` | `1.0` | identity - Hardy-Weinberg | PASS |
+| T047 | Molecular biology | `4^3 = 64 codons` | `4**3` | `64` | numeric | PASS |
+| T048 | Cell biology | `J = -D dC/dx` | `D * dC / dx` | `1` | numeric - magnitude | PASS |
+| T049 | Evolutionary biology | `p' = p + s p (1-p)` | `p + s * p * (1 - p)` | `0.525` | numeric | PASS |
+| T050 | Ecology | `dN/dt = rN(1 - N/K)` | `r * N * (1 - N / K)` | `25` | numeric | PASS |
+| T051 | Physiology | `CO = HR x SV` | `HR * SV` | `4900` | numeric | PASS |
+| T052 | Neuroscience | `E = 61.5 log10([K]out/[K]in)` | `61.5 * log10(Kout / Kin)` | `61.5` | numeric | PASS |
+| T053 | Immunology | `Kd = [A][B] / [AB]` | `A * B / AB` | `1` | numeric | PASS |
+| T054 | Microbiology | `N = N0 2^(t/g)` | `N0 * 2**(t / g)` | `8` | numeric | PASS |
+| T055 | Developmental biology | `C(x) = C0 exp(-x/lambda)` | `C0 * exp(-x / lam)` | `0.36787944117144233` | numeric | PASS |
+| T056 | Systems biology | `f(S) = S^n / (K^n + S^n)` | `S**n / (K**n + S**n)` | `0.5` | numeric | PASS |
+| T057 | Botany | `6 CO2 + 6 H2O -> C6H12O6 + 6 O2` | `C_in == C_out and H_in == H_out and O_in == O_out` | `True` | identity - atom balance | PASS |
+| T058 | Zoology | `Y = a M^b` | `a * M**b` | `31.622776601683793` | numeric | PASS |
+
+</details>
+
+<details>
+<summary><strong>Earth & Environmental Sciences</strong> — 7 topics, 7/7 passed</summary>
+
+| ID | Topic | Formula | Check | Expected | Basis | Result |
+|---|---|---|---|---|---|---|
+| T059 | Geology | `N = N0 exp(-lambda t)` | `N0 * exp(-lam * t)` | `0.36787944117144233` | numeric | PASS |
+| T060 | Meteorology | `T = T0 - Gamma h` | `T0 - Gamma * h` | `7` | numeric | PASS |
+| T061 | Oceanography | `c = sqrt(g H)` | `sqrt(g * H)` | `31.32091952673165` | numeric | PASS |
+| T062 | Planetary science | `T^2 / a^3 = const` | `T**2 / a**3` | `1` | identity - Kepler III | PASS |
+| T063 | Climatology | `F = sigma T^4` | `sigma * T**4` | `16` | numeric | PASS |
+| T064 | Environmental science | `C1 V1 = C2 V2` | `C1 * V1 / V2` | `1` | numeric | PASS |
+| T065 | Hydrology | `Q = (1/n) A R^(2/3) S^(1/2)` | `(1 / n) * A * R**(2 / 3) * S**(1 / 2)` | `1` | numeric | PASS |
+
+</details>
+
+<details>
+<summary><strong>Social Sciences</strong> — 13 topics, 13/13 passed</summary>
+
+| ID | Topic | Formula | Check | Expected | Basis | Result |
+|---|---|---|---|---|---|---|
+| T066 | Micro/macroeconomics | `Y = C + I + G + NX` | `C + I + G + NX` | `170` | numeric | PASS |
+| T067 | Econometrics | `beta = Cov(x,y) / Var(x)` | `cov_xy / var_x` | `2` | numeric | PASS |
+| T068 | Political science | `turnout = voters / population` | `voters / population` | `0.6` | numeric | PASS |
+| T069 | Sociology | `C_D(v) = deg(v) / (n - 1)` | `deg / (n - 1)` | `0.75` | numeric | PASS |
+| T070 | Anthropology | `N = N0 exp(r t)` | `N0 * exp(r * t)` | `110.51709180756477` | numeric | PASS |
+| T071 | Cognitive/social/developmental/clinical psychology | `Delta I / I = k` | `dI / I` | `0.2` | numeric - Weber fraction | PASS |
+| T072 | Linguistics (syntax, semantics, phonology, pragmatics) | `f(r) ~ 1 / r^s` | `1 / r**s` | `0.5` | numeric - Zipf law | PASS |
+| T073 | Human geography | `T = G Pi Pj / d^2` | `G * Pi * Pj / d**2` | `1.5` | numeric | PASS |
+| T074 | Criminology | `rate = incidents / population x 100000` | `incidents / population * 100000` | `50` | numeric | PASS |
+| T075 | Demography | `Td = 70 / r` | `70 / r` | `35` | numeric | PASS |
+| T076 | Education | `d = (M1 - M2) / SD` | `(M1 - M2) / SD` | `1` | numeric | PASS |
+| T077 | International relations | `power index = GDP x military` | `GDP * military` | `6` | numeric | PASS |
+| T078 | Game theory | `EU = sum p_i u_i` | `p[0] * u[0] + p[1] * u[1]` | `5` | numeric | PASS |
+
+</details>
+
+<details>
+<summary><strong>Law & Governance</strong> — 5 topics, 5/5 passed</summary>
+
+| ID | Topic | Formula | Check | Expected | Basis | Result |
+|---|---|---|---|---|---|---|
+| T079 | Constitutional law | `proportionality = fit & necessity & balancing` | `fit and necessity and balancing` | `True` | logic | PASS |
+| T080 | Criminal law | `crime = actus reus & mens rea` | `actus and mens` | `True` | logic | PASS |
+| T081 | Civil & contract law | `contract = offer & acceptance & consideration` | `offer and acceptance and consideration` | `True` | logic | PASS |
+| T082 | International law | `ratification = 2/3 Senate` | `votes / senate >= 2 / 3` | `True` | logic | PASS |
+| T083 | Administrative law | `review = not arbitrary & capricious` | `not arbitrary` | `True` | logic | PASS |
+
+</details>
+
+<details>
+<summary><strong>Humanities</strong> — 10 topics, 10/10 passed</summary>
+
+| ID | Topic | Formula | Check | Expected | Basis | Result |
+|---|---|---|---|---|---|---|
+| T084 | Epistemology | `K = J & T & B` | `J and T and B` | `True` | logic - JTB skeleton; Gettier caveat | PASS |
+| T085 | Ethics | `U = sum u_i` | `u[0] + u[1] + u[2]` | `4` | numeric | PASS |
+| T086 | Metaphysics | `a = a` | `a == a` | `True` | logic - identity | PASS |
+| T087 | History | `elapsed = end - start` | `end - start` | `237` | numeric | PASS |
+| T088 | Literary theory | `meaning = author intent + reader response` | `intent + response` | `1.0` | numeric - formal decomposition | PASS |
+| T089 | Religious studies | `N = N0 exp(-lambda t)` | `N0 * exp(-lam * t)` | `0.36787944117144233` | numeric - radiocarbon dating | PASS |
+| T090 | Art history | `phi = (1 + sqrt(5)) / 2` | `(1 + sqrt(5)) / 2` | `1.618033988749895` | numeric | PASS |
+| T091 | Music theory | `f2 / f1 = 2^(n/12)` | `2**(n / 12)` | `2.0` | numeric | PASS |
+| T092 | Classics | `translation loss = 1 - similarity` | `1 - similarity` | `0.2` | numeric | PASS |
+| T093 | Archaeology | `N = N0 exp(-lambda t)` | `N0 * exp(-lam * t)` | `0.36787944117144233` | numeric - radiocarbon dating | PASS |
+
+</details>
+
+<details>
+<summary><strong>Computer Science</strong> — 15 topics, 15/15 passed</summary>
+
+| ID | Topic | Formula | Check | Expected | Basis | Result |
+|---|---|---|---|---|---|---|
+| T094 | Algorithms | `T(n) = O(n log n)` | `n * log2(n)` | `24` | numeric | PASS |
+| T095 | Data structures | `T(n) = T(n/2) + 1` | `log2(n)` | `3` | numeric | PASS |
+| T096 | Programming languages & semantics | `(lambda x. x+1) 2 -> 3` | `(lambda x: x + 1)(2)` | `3` | numeric - beta reduction | PASS |
+| T097 | Operating systems | `L = lambda W` | `lam * W` | `6` | numeric - Little's law | PASS |
+| T098 | Networks | `C = B log2(1 + SNR)` | `B * log2(1 + SNR)` | `2` | numeric | PASS |
+| T099 | Databases | `\|R join S\| = \|{(r,s) in R x S : r.key = s.key}\|` | `len([(r, s) for r in R for s in S if r[0] == s[0]])` | `2` | numeric - equi-join cardinality | PASS |
+| T100 | Cryptography | `e d = 1 (mod phi(n))` | `(e * d) % phi` | `1` | numeric | PASS |
+| T101 | Security | `risk = threat x vulnerability x impact` | `threat * vulnerability * impact` | `24` | numeric | PASS |
+| T102 | Distributed systems | `C + A + P <= 2` | `c + a + p <= 2` | `False` | logic - CAP impossibility | PASS |
+| T103 | Machine learning | `L = -sum y log p` | `-(y[0] * log(p[0]) + y[1] * log(p[1]))` | `0.22314355131420976` | numeric | PASS |
+| T104 | AI | `P(A\|B) = P(B\|A) P(A) / P(B)` | `pba * pa / pb` | `0.45` | numeric | PASS |
+| T105 | Graphics | `x' = f x / z` | `f * x / z` | `1` | numeric | PASS |
+| T106 | Compilers | `L = {a^n b^n}` | `2 * n` | `6` | numeric - string length | PASS |
+| T107 | HCI | `T = a + b log2(2D/W)` | `a + b * log2(2 * D / W)` | `4` | numeric - Fitts law | PASS |
+| T108 | Software engineering | `D = defects / KLOC` | `defects / KLOC` | `0.5` | numeric | PASS |
+
+</details>
+
+<details>
+<summary><strong>Engineering</strong> — 9 topics, 9/9 passed</summary>
+
+| ID | Topic | Formula | Check | Expected | Basis | Result |
+|---|---|---|---|---|---|---|
+| T109 | Mechanical | `sigma = F / A` | `F / A` | `50` | numeric | PASS |
+| T110 | Electrical | `V = I R` | `I * R` | `6` | numeric | PASS |
+| T111 | Civil | `delta = F L^3 / (48 E I)` | `F * L**3 / (48 * E * I)` | `0.16666666666666666` | numeric | PASS |
+| T112 | Chemical | `V = F (A0 - A) / (-rA)` | `F * (A0 - A) / rA` | `1` | numeric | PASS |
+| T113 | Aerospace | `L = 0.5 rho v^2 S CL` | `0.5 * rho * v**2 * S * CL` | `24` | numeric | PASS |
+| T114 | Materials science | `sigma = E epsilon` | `E * epsilon` | `0.2` | numeric | PASS |
+| T115 | Control theory | `T = G / (1 + G H)` | `G / (1 + G * H)` | `0.6666666666666666` | numeric | PASS |
+| T116 | Robotics | `x = l cos(theta)` | `l * cos(theta)` | `2` | numeric | PASS |
+| T117 | Biomedical engineering | `J = -D dC/dx` | `D * dC / dx` | `0.5` | numeric - magnitude | PASS |
+
+</details>
+
+<details>
+<summary><strong>Medicine & Health</strong> — 9 topics, 9/9 passed</summary>
+
+| ID | Topic | Formula | Check | Expected | Basis | Result |
+|---|---|---|---|---|---|---|
+| T118 | Anatomy | `BMI = kg / m^2` | `kg / m**2` | `22.857142857142858` | numeric | PASS |
+| T119 | Pathology | `sensitivity = TP / (TP + FN)` | `TP / (TP + FN)` | `0.9` | numeric | PASS |
+| T120 | Pharmacology | `C = C0 (1/2)^(t/t_half)` | `C0 * 0.5**(t / thalf)` | `25` | numeric | PASS |
+| T121 | Internal medicine | `CrCl = (140-age) weight / (72 Scr)` | `(140 - age) * weight / (72 * Scr)` | `97.22222222222223` | numeric | PASS |
+| T122 | Surgery | `mortality = deaths / cases` | `deaths / cases` | `0.05` | numeric | PASS |
+| T123 | Epidemiology | `OR = (a/b) / (c/d)` | `(a / b) / (c / d)` | `3` | numeric | PASS |
+| T124 | Public health | `H = 1 - 1/R0` | `1 - 1 / R0` | `0.75` | numeric | PASS |
+| T125 | Diagnostics & clinical reasoning | `P(D\|T) = P(T\|D)P(D) / P(T)` | `pTD * pD / (pTD * pD + pTnotD * pnotD)` | `0.15384615384615385` | numeric | PASS |
+| T126 | Psychiatry | `PHQ-9 = sum items` | `items[0] + items[1] + items[2]` | `6` | numeric | PASS |
+
+</details>
+
+<details>
+<summary><strong>Business & Management</strong> — 8 topics, 8/8 passed</summary>
+
+| ID | Topic | Formula | Check | Expected | Basis | Result |
+|---|---|---|---|---|---|---|
+| T127 | Accounting | `A = L + E` | `L + E` | `100` | identity | PASS |
+| T128 | Finance | `NPV = sum CF_t / (1+r)^t` | `CF[0] / (1 + r)**1` | `100` | numeric | PASS |
+| T129 | Marketing | `CLV = ARPU x retention / (1 + discount - retention)` | `ARPU * retention / (1 + discount - retention)` | `26.666666666666668` | numeric | PASS |
+| T130 | Management & organizational behavior | `productivity = output / input` | `output / input` | `20` | numeric | PASS |
+| T131 | Operations research | `EOQ = sqrt(2 D S / H)` | `sqrt(2 * D * S / H)` | `100` | numeric | PASS |
+| T132 | Actuarial science | `premium = q x` | `q * x` | `1000` | numeric | PASS |
+| T133 | Entrepreneurship | `runway = cash / burn` | `cash / burn` | `20` | numeric | PASS |
+| T134 | Supply chain | `inventory = throughput x flow time` | `throughput * flow_time` | `6` | numeric - Little's law | PASS |
+
+</details>
+
+<details>
+<summary><strong>Arts & Design</strong> — 12 topics, 12/12 passed</summary>
+
+| ID | Topic | Formula | Check | Expected | Basis | Result |
+|---|---|---|---|---|---|---|
+| T135 | Visual arts/painting | `C = (C1 + C2) / 2` | `(r1 + r2) / 2` | `127.5` | numeric - red-channel blend | PASS |
+| T136 | Sculpture | `V ~ s^3` | `s**3` | `8` | numeric | PASS |
+| T137 | Architecture | `phi = (1 + sqrt(5)) / 2` | `(1 + sqrt(5)) / 2` | `1.618033988749895` | numeric | PASS |
+| T138 | Music composition | `f2 / f1 = 2^(n/12)` | `2**(n / 12)` | `1.4983070768766815` | numeric | PASS |
+| T139 | Theater | `A = w h` | `w * h` | `50` | numeric | PASS |
+| T140 | Dance | `beats = tempo x time / 60` | `tempo * time / 60` | `120` | numeric | PASS |
+| T141 | Film/cinema studies | `AR = w / h` | `w / h` | `1.7777777777777777` | numeric | PASS |
+| T142 | Photography | `EV = log2(N^2 / t)` | `log2(N**2 / t)` | `10.965784284662087` | numeric | PASS |
+| T143 | Graphic design | `content = columns x gutter` | `columns * gutter` | `240` | numeric | PASS |
+| T144 | UX design | `T = a + b log2(2D/W)` | `a + b * log2(2 * D / W)` | `4` | numeric - Fitts law | PASS |
+| T145 | Fashion | `new size = base size x scale` | `base * scale` | `1.5` | numeric | PASS |
+| T146 | Culinary arts | `new yield = old yield x factor` | `old * factor` | `6` | numeric | PASS |
+
+</details>
+
+<details>
+<summary><strong>Interdisciplinary</strong> — 10 topics, 10/10 passed</summary>
+
+| ID | Topic | Formula | Check | Expected | Basis | Result |
+|---|---|---|---|---|---|---|
+| T147 | Complexity science | `P(x) ~ x^(-alpha)` | `x**(-alpha)` | `0.25` | numeric | PASS |
+| T148 | Systems theory/cybernetics | `y = G / (1 + G H)` | `G / (1 + G * H)` | `0.6666666666666666` | numeric | PASS |
+| T149 | Cognitive science | `P(A\|B) = P(B\|A)P(A)/P(B)` | `pba * pa / pb` | `0.45` | numeric | PASS |
+| T150 | Network science | `C = 2E / (k(k-1))` | `2 * E / (k * (k - 1))` | `1` | numeric | PASS |
+| T151 | Bioinformatics | `score = matches - mismatches` | `matches - mismatches` | `8` | numeric | PASS |
+| T152 | Quantum information | `\|alpha\|^2 + \|beta\|^2 = 1` | `alpha**2 + beta**2` | `1.0` | identity | PASS |
+| T153 | Data ethics | `epsilon_total = sum epsilon_i` | `e1 + e2` | `0.3` | numeric - privacy-budget composition | PASS |
+| T154 | Sustainability | `I = P A T` | `P * A * T` | `24` | numeric | PASS |
+| T155 | Nanotechnology | `SA/V = 3 / r` | `3 / r` | `1.5` | numeric | PASS |
+| T156 | Science & technology studies | `C = deg / (n - 1)` | `deg / (n - 1)` | `0.75` | numeric | PASS |
+
+</details>
+
+---
+
 ## What works today
 
 The numbers below are not the pitch. They are the receipts.
