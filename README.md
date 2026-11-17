@@ -41,6 +41,25 @@ The result is a system that is deliberately conservative at the point of commitm
 
 ---
 
+## Comparison at a glance
+
+| Dimension | Typical LLM chat | RAG assistant | Agent framework | Knowledge graph | TheHive |
+|---|---|---|---|---|---|
+| **Source of truth** | Model weights and prompt | Retrieved text | Tool outputs, often trusted | Curated triples | Executed checks and independent anchors |
+| **Failure mode** | Confident invention | Retrieved-but-wrong context | Cascading tool errors | Stale or incomplete graph | Refusal, hold, or quarantine |
+| **Memory** | Context window | Vector index | Session state | Graph store | Tiered facts, queue, quarantine, ledger |
+| **Taxonomy** | None | None | None | Authored schema | Manufactured and audited per domain |
+| **Learning signal** | Pretraining / fine-tuning | Retrieval updates | Prompt/tool changes | Manual edits | Episodes, credit, bandits, QD, sleep |
+| **Audit trail** | Usually none | Usually none | Logs, not proofs | Provenance varies | Hash-chained ledger with rollback snapshots |
+| **Unknowns** | Often guessed | Often filled by retrieval | Often retried | Gaps may be invisible | Declared ungradable classes, visible but inactive |
+| **Deployment** | Cloud API or local | Cloud or local | Cloud or local | Server | Local-first, no GPU required |
+| **Self-improvement** | New model release | Re-index | Prompt tuning | Manual curation | Self-scheduled curriculum + self-repair |
+| **Human role** | Prompt writer | Corpus curator | Tool integrator | Ontologist | Auditor and governor |
+
+The table is a category comparison, not a claim that every system in a category behaves the same way. The point is the default posture.
+
+---
+
 ## What the Hive is
 
 The Hive is a self-running learning system. a small "hive" of AI agents, supervised by one "queen." The worker agents go out and find information (from web pages, feeds, chat, local documents and their own experiments), but they're never allowed to just declare something true. Instead, they hand their findings to the queen over a queue, like interns submitting reports for review. The queen only accepts a finding if it can actually be proven: either by running it (the math works, the code passes its tests) or by checking that at least two independent sources agree.
