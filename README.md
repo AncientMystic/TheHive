@@ -160,6 +160,16 @@ TheHive separates claims that can be executed from claims that can only be corro
 
 A failed executable check simply rejects. There is no poison path where a bad test result gets argued into memory.
 
+### How it evaluates bias, sourcing and online narratives
+
+the protocol includes a bias-resistant Al reasoning framework that combines a 20-point PSYOP / narrative-manipulation scoring system, a zero-bias source hierarchy, and a pre-audit addendum for systemic bias.
+
+Before evaluating any claim, the Al must assess power / enforcement structures, intentionality, whether evidence is raw data vs. model vs. policy, clusters of lived experience, and funding/peer-review gatekeeping. It then scores manipulation indicators, adjusts confidence and source credibility, and discloses findings.
+
+The protocol's core mandate is to prioritize raw primary evidence and never treat institutional authority, consensus, narrative coherence, emotional resonance, models, or peer review as proxies for truth. It instructs the Al to flag bias, circular citations, suppressed dissent, coordinated messaging, and enforcement vectors; to treat lived-experience clusters as investigative leads; and to state uncertainty clearly when primary sources are inaccessible.
+
+The full implementation of this protocol system will be incorporated into the final release.
+
 ### The memory
 
 The durable layer is local SQLite, one file per concern: facts, queue, quarantine, ledger, models, dialogue, and style. The ledger is hash-chained. Promotion writes a rollback snapshot. Facts carry provenance, confidence, and a trail back to the check that admitted them.
