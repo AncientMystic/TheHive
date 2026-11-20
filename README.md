@@ -162,13 +162,13 @@ A failed executable check simply rejects. There is no poison path where a bad te
 
 ### How it evaluates bias, sourcing and online narratives
 
-the protocol includes a bias-resistant Al reasoning framework that combines a 20-point PSYOP / narrative-manipulation scoring system, a zero-bias source hierarchy, and a pre-audit addendum for systemic bias.
+The protocol includes a bias-resistant Al reasoning framework that combines a 20-point PSYOP / narrative-manipulation scoring system, a zero-bias source hierarchy, and a pre-audit addendum for systemic bias.
 
 Before evaluating any claim, the Al must assess power / enforcement structures, intentionality, whether evidence is raw data vs. model vs. policy, clusters of lived experience, and funding/peer-review gatekeeping. It then scores manipulation indicators, adjusts confidence and source credibility, and discloses findings.
 
 The protocol's core mandate is to prioritize raw primary evidence and never treat institutional authority, consensus, narrative coherence, emotional resonance, models, or peer review as proxies for truth. It instructs the Al to flag bias, circular citations, suppressed dissent, coordinated messaging, and enforcement vectors; to treat lived-experience clusters as investigative leads; and to state uncertainty clearly when primary sources are inaccessible.
 
-The full implementation of this protocol system will be incorporated into the final release.
+(This portion is still more so undergoing testing and is not as mature as some of the other aspects, But the full implementation of this protocol system will be incorporated into the final release.)
 
 ### The memory
 
